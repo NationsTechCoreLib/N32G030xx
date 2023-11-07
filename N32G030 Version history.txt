@@ -1,0 +1,131 @@
+Nationstech.N32G030_Library.1.0.1版本：
+1.增加IAR工程
+2.调整代码格式
+3.ADC驱动代码增加ADC_ConfigOPAControl函数和ADC_ConfigOPASetUpTime函数以及相应宏定义
+
+Nationstech.N32G030_Library.1.1.0版本：
+1. OPAMP的VMSEL宏定义修改
+2. RCC中ADC 1MCLK选择的宏定义修改
+4. ADC 温度传感器及BG通道使能改写
+5. ADC Demo中HSI使能后应等到稳定
+6. LPTIM Demo Led函数GPIO拉反，修改代码并优化代码风格
+7. WWDG新增打印
+8. GPIO增加MCO输出口PA9
+9. PWR删除STOP+模式
+10. I2C EEPROM demo修改单字节通讯问题
+11. I2C主从机demo优化
+12. I2S添加MCLK参数
+14. LPUART 低功耗唤醒demo修改
+15. 各模块清中断标志函数修改后测试（包括ADC、Flash、HDIV、I2C、RTC、SPI、SQRT、TIM、USART）
+
+Nationstech.N32G030_Library.1.1.1版本：
+1.修改SPI Flash Demo里的W25Q网区擦除指令为0x20
+2.修改Beeper驱动，删除调用系统进入/退出LPRUN模式的代码，防止Beeper进入Beeper的LPRUN而使整个系统进入系统LPRUN
+3.修改TIM的example中的注释
+4.修改RCC_CFG_SCLKSE的宏定义
+5.修改COMP_INVREF_VREFSEL_MSK的宏定义
+6. I2C EEPROM例程优化中断/DMA方式
+7. LPUART驱动修改RTSEN\CTSEN宏定义
+8. 增加内部通道Vrefint的采样demo
+9. CompOut demo中增加中断的配置
+10.修改RTC calendar初始化函数，增加初始化间隔1S
+11.TIM驱动中OCxM改成OCxMD
+12.RCC驱动添加FIN/N*M及FIN/N限制,超范围编译报错
+13.OpaAdByTim的demo修改ADC1M时钟源为HSI
+
+Nationstech.N32G030_Library.1.1.2版本：
+1. 修改FLASH驱动及注释
+1）修改AC_LATENCY_MSK、RDP_USER_Key宏定义值
+2）FLASH_SetLatency函数增加注释描述，增加latency对应的时钟范围
+3）删除FLASH_Unlock、FLASH_Lock、FLASH_GetSTS、FLASH_WaitForLastOpt函数多余注释
+4）修改FLASH_ConfigALLOptionByte函数参数WRP_Pages注释及data移位操作，新增FLASH_NO_WRPR_Pages宏定义
+5）修改FLASH_ConfigUserOB的参数rdpuser_tmp赋值的值
+6）修改FLASH_INTConfig、FLASH_GetFlagSTS函数的输入参数及新增ECC错误相关参数，并修改检查宏定义
+2. TIM的DMA Burst的功能只对TIMx_DCTRL以及之前的寄存器有效。修改TIM驱动C文件中TIM_ConfigDma函数的注释，以及TIM驱动头文件TIM_DMABASE的宏定义
+3. LPTIM_NENC demo的main.c编译错误,修改代码并优化写法，LPTIM_WakeUp的demo有编译错误，修改main.h代码
+4. 删除void ADC_EnableTempSensorVrefint(FunctionalState Cmd)
+5.修改system_n32g030.c文件中的系统时钟配置宏定义方式
+6.修改RCC驱动中的RCC_ConfigPll函数，添加RCC_PLLSource寄存器配置
+7.修改RCC_ClockConfig例程中的pll配置代码，PLLOUT要在48~72M范围内，并优化部分注释
+
+Nationstech.N32G030_Library.1.1.3版本：
+1. system_n32g030.c和PWR-STOP例程中添加等待HSE稳定延时
+2. n32g030_rtc.c文件中，修改RTC_EnterInitMode(void)函数；
+3. n32g030_lptim.c文件中，删除LPTIM_TRIG_SOURCE_COMP2 的注释描述；
+4. n32g030_lptim.h文件中，删除LPTIM_TRIG_SOURCE_COMP2 的宏定义；
+5. n32g030_rtc.h文件中,修改RTC_GetTime 和RTC_GetSubSecond函数,在函数最后读取RTC_DATE寄存器
+6. n32g030_comp.c文件，新增 COMP_ClrIntStatus 函数
+7. CompOut Demo中新增比较器中断功能
+8. I2C_Slave_Int 和I2C_Slave Demo中新增注意事项
+9. KeyInterrupt Demo中新增GPIO模式配置
+10.RtcAutoWakeUp Demo中, 修改n32g030_it.c文件中的RTC_IRQHandler函数
+11.LPUART Interrupt_ok、USART Interrupt_ok例程中添加错误判断及清除，并关闭断言
+12.LPUART DMA_Interrupt例程优化
+13.OpaAdByTim例程中删除PB12作为TIM1的消隐源功能
+14.n32g030_rcc.c文件中，修改RCC_ConfigLse()函数
+
+Nationstech.N32G030_Library.1.0.1 version :
+1. Add IAR Project
+2. Adjust the code format
+3. ADC driver code adds ADC_ ConfigOPAControl function and ADC_ ConfigOPASetUpTime function and corresponding macro definition
+
+Nationstech.N32G030_Library.1.1.0 version：
+1. VMSEL macro definition modification for OPAMP
+2. Macro Definition Modification of ADC 1MCLK Selection in RCC
+4. ADC temperature sensor and BG channel enable rewriting
+5. HSI enabled in ADC Demo should wait until stable
+6. LPTIM demo Led function GPIO reversal, modify code and optimize code style
+7. WWDG add printing
+8. GPIO increases MCO output PA9
+9. PWR delete STOP+Mode
+10. I2C EEPROM demo modifies single byte communication Problems
+11. I2C master-slave demo optimization
+12. I2S add MCLK parameter
+14. LPUART low power wake-up demo modification
+15. After each module clear interrupt flag function modification test (including ADC, Flash, HDIV, I2C, RTC, SPI, SQRT, TIM, USART)
+
+Nationstech.N32G030_Library.1.1.1 version：
+1. Modify W25Q zone erase instructions in SPI Flash Demo to 0x20
+2. Modify the Beeper driver, delete the code that calls the system into/out of LPRUN mode, prevent Beeper from entering Beeper's LPRUN and bring the whole system into the system LPRUN
+3. Modify remark in TIM's example
+4. Modify RCC_CFG_Macro Definition of SCLKSE
+5. Modify macor of COMP_INVREF_VREFSEL_MSK
+6. I2C EEPROM example optimizes interrupt/DMA mode
+7. Lpuart driver modifies RTSEN\CTSEN macro definition
+8. Added internal channel Vrefint sample demo
+9. Added interrupt configuration in CompOut demo
+10. Modify RTC calendar init function, Add init interval of 1S
+11. Modify OCxM to OCxMD in TIM driver
+12.RCC driver add FIN/N*M and FIN/N limit, an error was reported for over-range compilation
+13. Modify the clock source of ADC1M is from HSI
+
+Nationstech.N32G030_Library.1.1.2 version：
+1. Modify FLASH drive and note
+1) Modify AC_ LATENCY_ MSK、RDP_ USER_ Key macro definition value
+2）FLASH_ SetLatency function adds a comment description and the clock range corresponding to latency
+3) Remove FLASH_ Unlock、FLASH_ Lock、FLASH_ GetSTS、FLASH_ WaitForLastOpt function extra comment
+4) Modify FLASH_ ConfigALLOptionByte function parameter WRP_Pages annotation and data shift operation, add FLASH_NO_WRPR_Pages Macro Definition
+5) Modify FLASH_ConfigUserOB's Parameter rdpuser_tmp  Value assigned
+6) Modify  Input parameters of FLASH_INTConfig and FLASHGetFlagSTS functions and new ECC error related parameters, and modify the check macro definition
+2. TIMx_DCTRL's subsequent registers cannot apply the DMABurst function, and modify the corresponding code
+3. main.c in LPTIM_NENC demo compilaion error, modify the code and optimize writing. LPTIM_Wakeup's demo has compilation errors, modify main.h.
+4. delete void ADC_EnableTempSensorVrefint(FunctionalState Cmd)
+5.Modify the way the system clock configuration macros are defined in the system_n32g030.c file
+6.Modify the RCC_ConfigPll function in the RCC driver and add RCC_PLLSource register configuration
+7.Modify the pll configuration code in the RCC_ClockConfig demo, PLLOUT should be in the range of 48~72M, and optimize some comments
+
+Nationstech.N32G030_Library.1.1.3 version：
+1. Add wait HSE stable delay in system_n32g030.c and PWR-STOP demo 
+2. Modify the RTC_EnterInitMode(void) function in the n32g030_rtc.c file
+3. Delete the comment description about LPTIM_TRIG_SOURCE_COMP2 in n32g030_lptim.c
+4. Delete  LPTIM_TRIG_SOURCE_COMP2 macro defination in n32g030_lptim.h
+5. RTC_GetTime and RTC_GetSubSecond function read RTC_DATE register in the end in the n32g030_rtc.c file
+6. Add COMP_ClrIntStatus function in n32g030_comp.c file
+7. Add interrupt configuration in CompOut demo
+8. Add notes in I2C_Slave_Int and I2C_Slave Demo 
+9. Add GPIO mode configuration in KeyInterrupt Demo 
+10. modify RTC_IRQHandler function in RtcAutoWakeUp Demo in n32g030_it.c file
+11. LPUART Interrupt_ok、USART Interrupt_ok demo add error flag check and clear, and disable assert
+12. LPUART DMA_Interrupt demo update
+13. Delete PB12 as the blinking source function for TIM1 in the OpaAdByTim demo
+14. Modify the RCC_ConfigLse() function in the n32g030_rcc.c file
